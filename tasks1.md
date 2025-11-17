@@ -1,7 +1,9 @@
 Vulnerability Report – Cross-Site Scripting (XSS)
 Vulnerability: Cross-Site Scripting (XSS)
 Type: Reflected XSS (Path Injection)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 Found in:
+
 
 Login Page URL Path:
 
@@ -648,3 +650,4 @@ Drag & Drop Hijacking
            •Strip HTML/script tags
 
            •Block Self-XSS payload execution on client side
+
