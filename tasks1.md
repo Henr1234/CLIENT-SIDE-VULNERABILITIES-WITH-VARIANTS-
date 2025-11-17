@@ -17,7 +17,7 @@ This occurs because the application does not sanitize or encode characters like 
 
 Steps to Reproduce:
 
-step 1 : Open Chrome or Firefox.
+# step 1 : Open Chrome or Firefox.
 
 step 2 : Visit the following malicious URL:
 
@@ -650,4 +650,5 @@ Drag & Drop Hijacking
            •Strip HTML/script tags
 
            •Block Self-XSS payload execution on client side
+
 
