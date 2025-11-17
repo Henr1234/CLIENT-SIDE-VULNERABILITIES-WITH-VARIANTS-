@@ -39,9 +39,11 @@ Mitigations:
 1)Properly escape and encode all user-controlled URL path segments.
 2)Validate and sanitize characters before rendering paths.
 3)Avoid constructing links using unsanitized relative paths.
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 Vulnerability Report – Reflected Cross-Site Scripting (XSS)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Vulnerability: Cross-Site Scripting (XSS)
 Type: Reflected XSS
 Found in:
@@ -77,8 +79,9 @@ Mitigations:
 •Strictly validate and sanitize URL parameters such as miniUrl.
 • Disable rendering of untrusted input inside HTML context.
 • Implement a strict Content Security Policy (CSP) to limit script execution.
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vulnerability: Cross-Site Scripting (XSS)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Type: Stored XSS
 Found in:https://app.mopub.com/reports/custom/
 
@@ -113,8 +116,9 @@ This can allow:
    Sanitize HTML tags and JavaScript event handlers.
    Implement strict Content Security Policy (CSP).
    Use allowlists for input fields like report names.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 DOM-BASED CROSS-SITE SCRIPTING (DOM XSS) REPORT
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Vulnerability: Cross-Site Scripting (XSS)
 Type: DOM-Based XSS
 Found in:https://kb.informatica.com/KBExternal/pages/infasearchltd.aspx
@@ -149,8 +153,9 @@ Mitigations:
     Sanitize document.URL before inserting into DOM.
     Never use .innerHTML with user-controlled data.
     Use .textContent or safe templating libraries.
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vulnerability: Cross-Site Scripting (XSS)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Type: Self XSS
 Found in:https://accounts.shopify.com/password-reset/new
 
@@ -182,8 +187,9 @@ Mitigations:
     • Escape all HTML characters in user inputs (<, >, ", ').
     • Use server-side and client-side sanitization.
     • Render user input using .textContent, not .innerHTML.
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vulnerability: Content Security Policy Bypass
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Type: CSRF Token Exfiltration via data-method POST Handler
 Found in: HackerOne platform — HTML injection inside reports
 
@@ -226,8 +232,9 @@ Mitigations:
 •Validate HTML inserted into report fields; use sanitization.
 •Strengthen CSP rules to disallow automatic POSTs to external origins.
 •Require user confirmation dialogs before executing data-method="post" actions.
+
+Vue Template Injection
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-1. Vue Template Injection
 Vulnerability: Vue Template Injection
 Type: Client-Side Template Injection → XSS
 Found in: Any parameter rendered inside Vue template bindings (e.g., {{ }}, v-bind, v-html).
@@ -259,8 +266,9 @@ PoC
     • Disable template parsing or use v-once / v-pre.
     • Escape { and } in user-controlled content.
     • Use security libraries like DOMPurify for HTML sanitization.
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 React JSX Injection
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Vulnerability: React JSX Injection
 Type: Client-Side Template Injection → XSS
 Found in: React components rendering user input into JSX attributes or dangerouslySetInnerHTML.
@@ -291,8 +299,9 @@ Found in: React components rendering user input into JSX attributes or dangerous
         •Avoid dangerouslySetInnerHTML unless absolutely required.
         •Sanitize HTML using DOMPurify before inserting.
         •Use React's default escaping everywhere else.
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Handlebars Client-Side Template Injection
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Vulnerability: Handlebars Template Injection
 Type: Client-Side Template Injection (CSTI) → XSS
@@ -324,8 +333,9 @@ Found in: Templates compiled in the browser, using unsanitized input inside {{ }
        •Precompile templates server-side.
        •Disable Handlebars dangerous helpers.
        •Escape all dynamic values before passing to templates.
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vulnerability: Mustache Template Injection
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Type: Client-Side Template Injection → Potential XSS
 Found in: {{ }} or {{{ }}} interpolation blocks.
 
@@ -358,8 +368,9 @@ But if the developer enables unescaped tags ({{{ }}}), user input can break HTML
        • Enforce escaping on all dynamic fields.
        • Sanitize HTML with DOMPurify.
        • Perform strict HTML filtering on inputs.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vulnerability: CSS Data Exfiltration
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Type: CSS Injection → Sensitive Data Leakage
 Found in: example.com/profile — “Full Name” and “Address” fields reflected into inline CSS without sanitization.
 
@@ -397,8 +408,9 @@ In this case, example.com embeds user profile information inside style blocks:
 ----->Mitigations: • Strip <style> tags from all user input
                    • Disallow special CSS characters ({, }, :, [, ])
                    • Implement CSP restricting external stylesheets
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vulnerability: CSS Keylogging
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Type: CSS Injection → Input Value Leakage
 Found in: example.com/login — username field style attribute is controlled by user input.
 
@@ -439,8 +451,9 @@ Found in: example.com/login — username field style attribute is controlled by 
        • Filter characters ({, }, [, ], :)
        • Enforce a strict CSP disallowing inline styles
        • Do not reflect input attributes without escaping
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vulnerability: CSS Selector Leakage
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Type: CSS Injection → Exfiltration of Private Information
 Found in: example.com/dashboard — reflected user role inside CSS class names.
 
@@ -480,8 +493,9 @@ Found in: example.com/dashboard — reflected user role inside CSS class names.
              • Do not reflect user-controlled values into class names
              • Block injection of CSS rules
              • Sanitize all template variables before inserting into <style>
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vulnerability: Classic Clickjacking
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Type: UI Redressing
 Found in: example.com/settings — no X-Frame-Options or CSP frame-ancestors header.
 -------->Description:Classic Clickjacking occurs when a website can be embedded inside an attacker-controlled iframe.
@@ -522,8 +536,9 @@ Mitigation:
                   X-Frame-Options: DENY 
                           or
                   X-Frame-Options: SAMEORIGIN
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Vulnerability: Likejacking
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Type: Social Media Clickjacking
 Found in: example.com/blog/*
 
@@ -555,8 +570,9 @@ Found in: example.com/blog/*
             • Add X-Frame-Options: DENY or CSP frame-ancestors 'self'
             • Avoid embedding social buttons via iframe
             • Replace them with static links or server-side share endpoints
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Cursorjacking
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Vulnerability: Cursorjacking
 Type: UI Redressing / Pointer Manipulation
@@ -603,8 +619,9 @@ Found in: example.com/account/delete
              • Block framing entirely:
              • Content-Security-Policy: frame-ancestors 'self'; 
              • X-Frame-Options: DENY;
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Drag & Drop Hijacking
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---->Summary - An attacker can hijack a user session by tricking the victim into performing a Self-XSS via the drag-and-drop feature in the chat.
 ---->Description: When a malicious payload is dragged and dropped into the chat box, Self-XSS gets executed. This allows the attacker to capture the victim’s Meteor.loginToken and take                                      o                 over their session.
 
@@ -629,4 +646,5 @@ Drag & Drop Hijacking
 ------>Mitigation:
            •Sanitize drag-and-drop input
            •Strip HTML/script tags
+
            •Block Self-XSS payload execution on client side
